@@ -1,6 +1,3 @@
-// Programmer: Farahsanwar
-// Class:  Section: 
-// Purpose: This program calculates the monthly phone bill and how much would be saved if another plan was chosen.
 #include <iostream> // for cin and cout to be used
 #include <iomanip> // for formatting decimals
 #include <string> // for string
