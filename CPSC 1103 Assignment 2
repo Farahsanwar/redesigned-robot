@@ -1,0 +1,99 @@
+//Assignment 2
+//Programmer: Farahsanwar
+//CPSC 1103 Section: S11
+//Purpose: To identify how many months it will take to pay off a loan, as well as the total amount of interest paid over the life of the loan.
+
+#include <iostream> // for cin and cout to be used
+#include <iomanip> // for formatting decimals
+
+using namespace std; // for later versions of c++
+
+int main()
+
+{
+	int Month = 0; // used to check month
+	double Principle = 0; // used to check principle
+	double InterestPaid = 0; // used to check interestpaid
+	double PrinciplePaid = 0; // used to check principlepaid
+	double RemainingBalance = 0; // used to check remaining balance
+	double InterestRate = 0; // used to check interestrate
+	double Paid = 0; // used to check for monthly payment
+	double Payment = 0; // used to check for total interest paid
+
+	cout << "Please enter the amount of loan you have taken" << endl; // ask for loan taken
+	
+cin >> Principle; // input principle
+
+	while (Principle <= 0) // validate principle
+
+	{
+		
+cout << "Please enter a higher Loan amount" << endl; // if invalid ask for principle again
+			
+cin >> Principle; // input principle
+
+	}
+
+	cout << "Please enter your Yearly Interest Rate" << endl; // ask for interest rate
+	
+cin >> InterestRate; // input interest rate
+
+while (InterestRate <= 0) // validate interest rate
+	{
+		cout << "Please enter a higher Interest Rate amount" << endl; // if invalid ask for
+		interest rate again
+			cin >> InterestRate; // input interest rate
+
+	}
+
+	cout << "Please enter the Monthly Amount Paid" << endl; // ask for monthly payment
+	
+cin >> Paid; // input payment
+	InterestRate = InterestRate / 12; // calculate monthly interest rate
+	
+while ((Paid - (Principle * InterestRate) <= 0)) // validate payment amount
+	{
+		cout << "Please pay a higher Payment per month" << endl; // if invalid, ask for a higher payment
+			cin >> Paid; // input payment
+
+	}
+	
+cout << "Month" << "\t" << fixed << setprecision(2) << "Principle" << "\t" << "Interest Paid" << "\t" << // Label the table
+
+		"Principle Paid" << "\t" << "Remaining Balance" << endl;
+ 
+cout << "__________________________________________________________________________" <<
+
+endl;
+	
+while ((RemainingBalance >= 0) && (Paid - (Principle * InterestRate) > 0)) // while loop
+
+	{
+		InterestPaid = (Principle * InterestRate); // calculate interest paid
+		PrinciplePaid = Paid - InterestPaid; // calculate payment towards the principle
+		RemainingBalance = Principle - PrinciplePaid; // calculate the remaining balance
+		Month++; // add 1 to month counter
+
+		cout << Month << "\t" << Principle << "\t\t" << InterestPaid << "\t\t" << // display the month, principle, interest paid, principle paid and remaining balance for each payment
+			PrinciplePaid << "\t\t" << RemainingBalance << endl;
+
+		Principle = RemainingBalance; // calculate the principle
+
+		Payment += InterestPaid; // calculate total interest payment
+
+	}
+
+	cout << "__________________________________________________________________________" <<
+		
+endl;
+
+	cout << "Total number of months to pay off the Loan: " << Month << endl; // display the number of months it took to pay off the loan
+
+		cout << "Total Interest paid on loan: " << Payment << endl; // display the total interest
+	paid on loan
+		cout << "You have a credit of: " << RemainingBalance << endl; // display current balance of the account
+
+		system("pause"); // stops program from shutting
+	
+return 0; // return all values to 0
+}
